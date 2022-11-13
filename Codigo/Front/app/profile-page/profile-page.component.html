@@ -1,0 +1,62 @@
+<div class="page">
+    <div>
+        TAPASTOP/PROFILE
+    </div>
+    <div class="container">
+        <div class="side-menu">
+            <a [routerLink]="['/home']">Home</a>
+            <a [routerLink]="['/galardones']">Awards</a>
+            <a [routerLink]="['/degustaciones']">Tastings</a>
+            <a [routerLink]="['/help']">Help</a>
+        </div>
+        <div class="custom-form" *ngIf="!modify">
+            <h3>{{user.userName}}</h3>
+            <img src="assets/images/profile-picture.png" />
+            <div class="userInfo">
+                <span>EMAIL: {{user.email}}</span>
+                <span>NAME: {{user.name}}</span>
+                <span>SURNAME: {{user.surname}}</span>
+                <span>LOCALIZATION: {{user.localization}}</span>
+                <span>DESCRIPTIOPN: {{user.description}}</span>
+            </div>
+            <button type="submit" (click)="editInfo()">Edit</button>
+        </div>
+        <div class="custom-form" *ngIf="modify">
+            <h3>{{user.userName}}</h3>
+            <img src="assets/images/profile-picture.png" />
+            <div class="userInfo">
+                <div class="p-inputgroup">
+                    <span>USER NAME: </span>
+                    <input type="text" pInputText [(ngModel)]="modifiedUser.userName" name="email"
+                        placeholder={{user.userName}} />
+                </div>
+                <div class="p-inputgroup">
+                    <span>EMAIL: </span>
+                    <input type="text" pInputText [(ngModel)]="modifiedUser.email" name="email"
+                        placeholder={{user.email}} />
+                </div>
+                <div class="p-inputgroup">
+                    <span>NAME: </span>
+                    <input type="text" pInputText [(ngModel)]="modifiedUser.name" name="email"
+                        placeholder={{user.name}} />
+                </div>
+                <div class="p-inputgroup">
+                    <span>SURNAME: </span>
+                    <input type="text" pInputText [(ngModel)]="modifiedUser.surname" name="email"
+                        placeholder={{user.surname}} />
+                </div>
+                <div class="p-inputgroup">
+                    <span>LOCALIZATION: </span>
+                    <input type="text" pInputText [(ngModel)]="modifiedUser.localization" name="email"
+                        placeholder={{user.localization}} />
+                </div>
+                <div class="p-inputgroup">
+                    <span>DESCRIPTION: </span>
+                    <textarea pInputTextarea [(ngModel)]="modifiedUser.description" name="email"
+                        placeholder={{user.description}}></textarea>
+                </div>
+            </div>
+            <button type="submit" (click)="editInfo()">Submit</button>
+        </div>
+    </div>
+</div>

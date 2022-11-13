@@ -1,0 +1,24 @@
+<div class="page">
+    <div>
+        TAPASTOP/LOGIN
+    </div>
+    <div class="container">
+        <div class="login">
+            <form class="custom-form" method="post">
+                <h3>Login</h3>
+                <input type="username" [(ngModel)]="userName" name="username" placeholder="Username"
+                    required="required" />
+                <input type="password" [(ngModel)]="password" name="password" placeholder="Password"
+                    required="required" />
+                <div>
+                    <button type="submit" (click)="login()">Log in</button>
+                    <a [routerLink]="['/registration']">Register</a>
+                    <div class="rePwd">
+                        <a [routerLink]="['/recovery']">Forgot your password?</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <p-toast position="bottom-center" life="1000"></p-toast>
+    </div>

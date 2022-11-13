@@ -1,0 +1,30 @@
+<div class="page">
+    <div>
+        TAPASTOP/RECOVERY
+    </div>
+    <div class="container">
+        <div class="login">
+            <form class="custom-form" method="post">
+                <h3>Password Recovery</h3>
+                <div *ngIf="!emailSent && !correctCode">
+                    <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email"
+                        required="required" />
+                    <button type="submit" (click)="recovery()">Send Recovery Email</button>
+                </div>
+                <div *ngIf="emailSent && !correctCode">
+                    <h3>A recovery mail was sent to: {{email}}</h3>
+                    <!-- <input type="code" [(ngModel)]="inputRecoverycode" name="code" placeholder="Enter recovery code"
+                        required="required" /> -->
+                    <button type="submit" (click)="checkRecoveryCode()">Continue</button>
+                </div>
+                <!-- <div *ngIf="correctCode">
+                    <input type="password" [(ngModel)]="pwd" name="pwd" placeholder="Enter new password"
+                        required="required" />
+                    <input type="password" [(ngModel)]="repeatedPwd" name="pwd2" placeholder="Repeat Password"
+                        required="required" />
+                    <button type="submit" (click)="savePwd()">Save New Password</button>
+                </div> -->
+            </form>
+        </div>
+        <p-toast position="bottom-center" life="1000"></p-toast>
+    </div>

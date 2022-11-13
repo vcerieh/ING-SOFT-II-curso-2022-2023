@@ -1,0 +1,45 @@
+<div class="page">
+    <div>
+        TAPASTOP/REGISTRATION
+    </div>
+    <div class="container">
+        <div class="register">
+            <form class="custom-form" method="post">
+                <div *ngIf="!ageChecked">
+                    <h3>Please enter your date of birth</h3>
+                    <p-calendar [(ngModel)]="inputDate" dateFormat="dd.mm.yy" name="fechaNacimiento">
+                    </p-calendar>
+                    <span>
+                        <button type="submit" (click)="checkAge()">Next</button>
+                    </span>
+                </div>
+                <div *ngIf="ageChecked && !mainDataCompleted && !additionalDataCompleted">
+                    <h3>Registration</h3>
+                    <input type="username" [(ngModel)]="user.userName" name="username" placeholder="Username" required="required" />
+                    <input type="password" [(ngModel)]="user.pwd" name="password" placeholder="Password"
+                        required="required" />
+                    <input type="password" [(ngModel)]="confirmPassword" name="password"
+                        placeholder="Repeat the password" required="required" />
+                    <input type="email" [(ngModel)]="user.email" name="email"
+                        placeholder="Email" required="required" />
+                    <button type="submit" (click)="goToAdditionalData()">Next</button>
+                </div>
+                <div *ngIf="mainDataCompleted && !additionalDataCompleted">
+                    <h3>Aditional Data for your Profile</h3>
+                    <input type="name" [(ngModel)]="user.name" name="name" placeholder="Name" required="required" />
+                    <input type="surname" [(ngModel)]="user.surname" name="surname" placeholder="Surname *OPTIONAL*"/>
+                    <input type="localization" [(ngModel)]="user.localization" name="localization" placeholder="Where are you from *OPTIONAL*"/>
+                    <input type="description" [(ngModel)]="user.description" name="description" placeholder="Tell us a bit about you *OPTIONAL*"/>
+                    <button type="submit" (click)="goToConfirmationEmail()">Next</button>
+                </div>
+                <div *ngIf="additionalDataCompleted">
+                    <h3>Enter confirmation code</h3>
+                    <h5>A confirmation email was sento to: {{user.email}}, please check your inbox for the confirmation code</h5>
+                    <input type="confirmationCode" [(ngModel)]="inputConfirmationCode" name="confirmationCodeInput" placeholder="Enter confirmation Code"required="required"/>
+                    <button type="submit" (click)="register()">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <p-toast position="bottom-center" life="1000"></p-toast>
+</div>

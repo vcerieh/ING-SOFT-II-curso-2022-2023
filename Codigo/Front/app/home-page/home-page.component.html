@@ -1,0 +1,77 @@
+<div class="page">
+    <div>
+        TAPASTOP/HOME
+    </div>
+    <div class="container">
+        <h5>welcome back {{user.name}}</h5>
+        <div class="side-menu">
+            <a [routerLink]="['/profile']">Profile</a>
+            <a [routerLink]="['/galardones']">Awards</a>
+            <a [routerLink]="['/degustaciones']">Tastings</a>
+            <a [routerLink]="['/help']">Help</a>
+            <input type="search" [(ngModel)]="searchInfo" name="search" placeholder="Input search..." />
+            <button type="submit" (click)="search()">Search</button>
+        </div>
+        <div class="custom-form">
+            <diV class="first-block">
+                <img src="assets/images/profile-picture.png" />
+            </diV>
+            <div class="first-block">
+                <h3>Profile</h3>
+                <span>User Name: {{user.userName}} </span>
+                <span>Name: {{user.name}}</span>
+                <span>Pending Requests: 0</span>
+                <a [routerLink]="['/profile']">View All</a>
+            </div>
+            <div class="first-block">
+                <h3>Statistics</h3>
+                <span>Tastings: {{nTastings}}</span>
+                <span>New restaurants: {{nRestaurants}}</span>
+                <a [routerLink]="['/statistics']">View All</a>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="custom-form2">
+                <h3>Favourite Meals</h3>
+                <p-table [value]="fTastings" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Food Type</th>
+                            <th>Country</th>
+                            <th>Taste</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-tasting>
+                        <tr>
+                            <td>{{tasting.name}}</td>
+                            <td>{{tasting.description}}</td>
+                            <td>{{tasting.foodType}}</td>
+                            <td>{{tasting.country}}</td>
+                            <td>{{tasting.taste}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                <a [routerLink]="['/tastings']">View All</a>
+            </div>
+            <div class="custom-form2">
+                <h3>Awards</h3>
+                <p-table [value]="awards" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-award>
+                        <tr>
+                            <td>{{award.name}}</td>
+                            <td>{{award.description}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
